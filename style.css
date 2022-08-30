@@ -42,12 +42,12 @@ li {
     margin-top: 5px;
 }
 
-a {
+#header a {
     text-decoration: none;
     color: white;
 }
 
-#intro {
+.intro {
     margin-top: 30px;
     font-size: 30px;
 }
