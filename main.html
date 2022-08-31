@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" type = "text/css" href = "style.css">
-    <title>WDYWE?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    </style>
+    <title>WDYWE? &trade;</title>
 </head>
 <body>
 
 <header id = "header">
-    <h1 id = "storename">WDYWE?<br>
-
+    <h1 id = "appname">WDYWE?<br>
         </h1>
             <ul>
                 <li><a href = "about.html">About Us</a></li>
@@ -19,59 +21,56 @@
             </ul>
 </header>
 
-<div id = "intro">
+<div class = "intro">
     What Do You Wanna Eat? <br>
     <img>
 </div>
 
-<div>
-    <p></p>
+<div id = "instructions">
+    <p>Let us help you figure that out.
+        Please fill out the form below with your preferences so we can find restuarants for you!</p>
 </div>
 
 <div id = "form">
-    <form action = "" id = "cuisines">
-        <label>Choose a cuisine type:
-        <select name = "cuisinetype" id = "cuisinetype">
-            <option value = "japanese">Japanese</option>
-            <option value = "mexican">Mexican</option>
-            <option value = "mediterrenean">Mediterrenean</option>
-            <option value = "indian">Indian</option>
-            <option value = "american">American</option>
-            <option value = "thai">Thai</option>
-            <option value = "vietnamese">Vietnamese</option>
-        </select>
-        </label>
+    <form id = "cuisines">
+        <fieldset>
+            <legend class = "title">Find a New Restaurant!</legend>
+                <label class = "title">Cuisine Type:
+                    <br>
+                    <select name = "cuisinetype" id = "cuisinetype">
+                        <option value = "japanese">Japanese</option>
+                        <option value = "mexican">Mexican</option>
+                        <option value = "mediterrenean">Mediterrenean</option>
+                        <option value = "indian">Indian</option>
+                        <option value = "american">American</option>
+                    </select>
+                </label>
+        <br><br>
+
+                <label class = "title">Any Food Preferences?
+                    <br>
+                    <label>
+                    <input type = "checkbox" name = "vegan" id = "vegan">
+                        Vegan
+                    </label>
+                    <label>
+                    <input type = "checkbox" name = "vegetarian" id = "vegetarian">
+                    Vegetarian
+                    </label>
+                    <label>
+                    <input type = "checkbox" name = "glutenfree" id = "glutenfree">
+                    Gluten Free
+                    </label>
+                    </label>
+
+        <br><br>
+
+                <input type= "submit" value= "Submit" id = "submit">
+        </fieldset>
     </form>
 </div>
 
-<div id = "form2">
-    <form action = "" id = "preferences">
-        <legend>Choose any food preferences:
-            <label>
-                <input type = "checkbox" name = "vegan" id = "vegan">
-                Vegan
-            </label>
-            <label>
-                <input type = "checkbox" name = "vegetarian" id = "vegetarian">
-                Vegetarian
-            </label>
-            <label>
-                <input type = "checkbox" name = "glutenfree" id = "glutenfree">
-                Gluten Free
-            </label>
-            <label>
-                <input type = "checkbox" name = "spicy" id = "spicy">
-                Spicy
-            </label>
-            <label>
-                <input type = "checkbox" name = "comfortfood" id = "comfortfood">
-                Comfort Food
-            </label>
-        </legend>
-    </form>
-</div>
-
-
+<footer>&copy; WDYWE? 2022</footer>
 <script src = "app.js"></script>
 </body>
 </html>
