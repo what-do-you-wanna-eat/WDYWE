@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    </style>
+    <title>WDYWE? &trade;</title>
+</head>
+<body>
+
+<header id = "header">
+    <h1 id = "appname">WDYWE?<br>
+        </h1>
+            <ul>
+                <li><a href = "about.html">About Us</a></li>
+                <li><a href = "favorite.html">Favorites</a></li>
+            </ul>
+</header>
+
+<div class = "intro">
+    What Do You Wanna Eat? <br>
+    <img>
+</div>
+
+<div id = "instructions">
+    <p>Let us help you figure that out.
+        Please fill out the form below with your preferences so we can find restuarants for you!</p>
+</div>
+
+<div id = "form">
+    <form id = "cuisines">
+        <fieldset>
+            <legend class = "title">Find a New Restaurant!</legend>
+                <label class = "title">Cuisine Type:
+                    <br>
+                    <select name = "cuisinetype" id = "cuisinetype">
+                        <option value = "japanese">Japanese</option>
+                        <option value = "mexican">Mexican</option>
+                        <option value = "mediterrenean">Mediterrenean</option>
+                        <option value = "indian">Indian</option>
+                        <option value = "american">American</option>
+                    </select>
+                </label>
+        <br><br>
+
+                <label class = "title">Any Food Preferences?
+                    <br>
+                    <label>
+                    <input type = "checkbox" name = "vegan" id = "vegan">
+                        Vegan
+                    </label>
+                    <label>
+                    <input type = "checkbox" name = "vegetarian" id = "vegetarian">
+                    Vegetarian
+                    </label>
+                    <label>
+                    <input type = "checkbox" name = "glutenfree" id = "glutenfree">
+                    Gluten Free
+                    </label>
+                    </label>
+
+        <br><br>
+
+                <input type= "submit" value= "Submit" id = "submit">
+        </fieldset>
+    </form>
+</div>
+
+<footer>&copy; WDYWE? 2022</footer>
+<script src = "app.js"></script>
+</body>
+</html>
