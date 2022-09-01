@@ -156,7 +156,6 @@ footer {
 #bio2head {
     font-family: 'Pacifico', cursive;
     font-size: 55px;
-    line-height: 0px;
 }
 
 #ezgi {
@@ -188,7 +187,6 @@ footer {
 #bio3head {
     font-family: 'Pacifico', cursive;
     font-size: 55px;
-    line-height: 15px;
 }
 
 #stacy {
@@ -218,6 +216,7 @@ footer {
 #bio4head {
     font-family: 'Pacifico', cursive;
     margin-top: 60px;
+    margin-bottom: 40px;
     font-size: 55px;
     line-height: 15px;
 }
