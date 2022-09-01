@@ -97,13 +97,13 @@ footer {
 }
 
 /* about me page */
+
 #andra {
     display: flex;
     color: gray;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
     margin-bottom: 50px;
     font-size: 20px;
     text-align: center;
@@ -132,13 +132,12 @@ footer {
 #chris {
     display: flex;
     color: gray;
-    width: 70%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 50px;
     font-size: 20px;
-    text-align: center;
 }
 
 #chrispic {
@@ -163,7 +162,7 @@ footer {
 #ezgi {
     display: flex;
     color: gray;
-    width: 70%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
