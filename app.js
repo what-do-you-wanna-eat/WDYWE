@@ -47,7 +47,6 @@ function randomRestaurant(){
 }
 
 // save Restaurants
-
 function saveRestaurants () {
   let stringify = JSON.stringify(allRestaurants);
   localStorage.setItem('allRestaurants', stringify);
@@ -80,7 +79,6 @@ function displayRestaurants(e){
   let options = e.target;
 
   // console log the input values
-
   let cuisineType = options.cuisinetype.value;
   console.log(cuisineType);
 
@@ -118,11 +116,6 @@ function displayRestaurants(e){
   }
 }
   
-
-
-
-
-
 
 //--------------------FUNCTION CALLS
 
