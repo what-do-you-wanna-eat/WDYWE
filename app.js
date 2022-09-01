@@ -13,7 +13,7 @@ new Restaurant ("La Carta de Oaxaca", "Mexican", "5431 Ballard Ave. Seattle, WA 
 new Restaurant ("Cafe Turko", "Mediterranean", "750 N. 34th St., Seattle, WA 98103", ['vegan', 'vegetarian']),
 new Restaurant ("Momnoon", "Mediterranean", "1508 Melrose Ave. Seattle, WA 98122", ['vegan', 'vegetarian']),
 new Restaurant ("Petra Bistro", "Mediterranean", "2501 4th Ave., Seattle, WA 98121", ['vegan', 'vegetarian']),
-new Restaurant ("Tast of India", "Indian", "5517 Roosevelt Way, Seattle, WA 98105",['vegan', 'vegetarian']),
+new Restaurant ("Taste of India", "Indian", "5517 Roosevelt Way, Seattle, WA 98105",['vegan', 'vegetarian']),
 new Restaurant ("Daawat Grill", "Indian", "820 Pike St., Seattle, WA 98101", ['vegan', 'vegetarian']),
 new Restaurant ("Nirmal\'s", "Indian", "106 Occidental Ave., Seattle, WA 98104", ['vegan', 'vegetarian']),
 new Restaurant ("Applebee\'s", "American", "13856 Bel Red Rd., Bellevue, WA 90005", ['gluten-free']),
@@ -125,3 +125,32 @@ function displayRestaurants(e){
 
 // function for saving favorites to local storage
 
+// slide show function
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
