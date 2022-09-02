@@ -43,10 +43,25 @@ function Restaurant (name, cuisine, address, preferences, any){
 
 Restaurant.prototype.favorite = function (){
   let input = document.createElement('input');
-  input.setAttribute('type', 'checkbox');
+  input.setAttribute('type', 'submit');
   input.setAttribute('id', 'favorites');
+
   let favorites = document.getElementById('favorites');
-  favorites.addEventListener('click', starButton);
+
+  // console.log(favorites);
+  if (favorites){
+  favorites.addEventListener('submit', starButton);
+  }
+
+  function starButton (e){
+    e.preventDefault();
+
+    if (e){
+      if (favorites === e.target){
+        allFavorites.push(this);
+      }
+    }
+  }
 }
 
 //--------------------FUNCTIONS
@@ -78,7 +93,6 @@ function getRestaurants() {
 // }
 
 
-
 //--------------------EVENT LISTENERS
 
 // event listener and handler for the form
@@ -86,7 +100,6 @@ function getRestaurants() {
 
 let form = document.getElementById("options");
 form.addEventListener('submit', displayRestaurants);
-
 
 //--------------------EVENT HANDLERS
 
@@ -121,14 +134,18 @@ results.innerHTML = '';
       // let img = document.createElement('li');
       let address = document.createElement('li');
       let categories = document.createElement('li');
+      let favorites = document.createElement('li');
 
       title.innerText = allRestaurants[i].name;
       // img.innerText = 
       address.innerText = allRestaurants[i].address;
       categories.innerText = `${allRestaurants[i].cuisine}, ${allRestaurants[i].preferences}`;
+      favorites.innerText = allRestaurants[i].favorite();
+
       restaurant.appendChild(title);
       restaurant.appendChild(address);
       restaurant.appendChild(categories);
+      restaurant.appendChild(favorites);
       results.appendChild(restaurant);
     } 
   }
@@ -179,11 +196,11 @@ function showSlides() {
     //e.preventDefault();
   //}, false);
 
-  //Add favorites to localStorage
+  // Add favorites to localStorage
   // let favorites = localStorage.getItem('favorites');
   // if(!favorites){
-    //localStorage.setItem('favorites', JSON.stringify);
-    //favorites = JSON.parse(localStorage.getItem('favorites'));
-  //} else{
-    //favorites = JSON.parse(favorites);
-  //}
+  //   localStorage.setItem('favorites', JSON.stringify);
+  //   favorites = JSON.parse(localStorage.getItem('favorites'));
+  // } else{
+  //   favorites = JSON.parse(favorites);
+  // }
