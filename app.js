@@ -4,21 +4,21 @@
 // array for all the restaurant objects
 let allRestaurants = [
 // using constructor functions to create restaurants
-new Restaurant ("Shiro\'s", "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian']),
-new Restaurant ("Ishoni Yakiniku", "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian', 'gluten-free']),
-new Restaurant ("Kizuki Ramen", "Japanese", "320 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian']),
-new Restaurant ("Fogon Cocina", "Mexican", "600 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian']),
-new Restaurant ("Fonda la Catrina", "Mexican", "5905 Airport Way S. Seattle, WA 98108", ['vegan', 'vegetarian']),
-new Restaurant ("La Carta de Oaxaca", "Mexican", "5431 Ballard Ave. Seattle, WA 98107", ['vegan', 'vegetarian']),
-new Restaurant ("Cafe Turko", "Mediterranean", "750 N. 34th St., Seattle, WA 98103", ['vegan', 'vegetarian']),
-new Restaurant ("Momnoon", "Mediterranean", "1508 Melrose Ave. Seattle, WA 98122", ['vegan', 'vegetarian']),
-new Restaurant ("Petra Bistro", "Mediterranean", "2501 4th Ave., Seattle, WA 98121", ['vegan', 'vegetarian']),
-new Restaurant ("Taste of India", "Indian", "5517 Roosevelt Way, Seattle, WA 98105",['vegan', 'vegetarian']),
-new Restaurant ("Daawat Grill", "Indian", "820 Pike St., Seattle, WA 98101", ['vegan', 'vegetarian']),
-new Restaurant ("Nirmal\'s", "Indian", "106 Occidental Ave., Seattle, WA 98104", ['vegan', 'vegetarian']),
-new Restaurant ("Applebee\'s", "American", "13856 Bel Red Rd., Bellevue, WA 90005", ['gluten-free']),
-new Restaurant ("Denny\'s", "American", "2762 4th Ave., Seattle, WA 98134", ['gluten-free']),
-new Restaurant ("Red Lobster", "American", "4231 196th St., Lynwood, WA 98036", ['gluten-free']),
+new Restaurant ("Shiro\'s", "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Ishoni Yakiniku", "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian', 'gluten-free'], 'Any'),
+new Restaurant ("Kizuki Ramen", "Japanese", "320 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Fogon Cocina", "Mexican", "600 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Fonda la Catrina", "Mexican", "5905 Airport Way S. Seattle, WA 98108", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("La Carta de Oaxaca", "Mexican", "5431 Ballard Ave. Seattle, WA 98107", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Cafe Turko", "Mediterranean", "750 N. 34th St., Seattle, WA 98103", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Momnoon", "Mediterranean", "1508 Melrose Ave. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Petra Bistro", "Mediterranean", "2501 4th Ave., Seattle, WA 98121", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Taste of India", "Indian", "5517 Roosevelt Way, Seattle, WA 98105",['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Daawat Grill", "Indian", "820 Pike St., Seattle, WA 98101", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Nirmal\'s", "Indian", "106 Occidental Ave., Seattle, WA 98104", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Applebee\'s", "American", "13856 Bel Red Rd., Bellevue, WA 90005", ['gluten-free'], 'Any'),
+new Restaurant ("Denny\'s", "American", "2762 4th Ave., Seattle, WA 98134", ['gluten-free'], 'Any'),
+new Restaurant ("Red Lobster", "American", "4231 196th St., Lynwood, WA 98036", ['gluten-free'], 'Any'),
 ];
 
 
@@ -26,15 +26,12 @@ new Restaurant ("Red Lobster", "American", "4231 196th St., Lynwood, WA 98036", 
 
 // constructor function for creating restaurants
 
-function Restaurant (name, cuisine, address, preferences){
+function Restaurant (name, cuisine, address, preferences, any){
   this.name = name;
   this.cuisine = cuisine;
   this.address = address; 
   this.preferences = preferences;
-  //following rows will be boolean values
-  // this.vegan = vegan;
-  // this.vegetarian = vegetarian;
-  // this.gluten_free = gluten_free;
+  this.any = any;
 }
 
 //--------------------CONSTRUCTOR METHODS
@@ -59,7 +56,6 @@ function getRestaurants() {
     allRestaurants = parsedItems;
   }
 }
-
 
 //--------------------EVENT LISTENERS
 
@@ -92,8 +88,7 @@ function displayRestaurants(e){
   }
 
   for (let i = 0; i < allRestaurants.length; i++){
-    if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference)){
-    
+    if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType || allRestaurants[i].cuisine == cuisineType){
       let results = document.getElementById("results");
       let restaurant = document.createElement('ul');
       restaurant.setAttribute('id', 'restaurantOptions');
