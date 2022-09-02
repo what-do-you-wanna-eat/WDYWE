@@ -35,36 +35,17 @@ function Restaurant (name, cuisine, address, preferences, any){
   this.address = address; 
   this.preferences = preferences;
   this.any = any;
+  this.favorite = false;
 }
 
 //--------------------CONSTRUCTOR METHODS
 
-//prototype for handling favoriting event
-
-Restaurant.prototype.favorite = function (){
-  let input = document.createElement('input');
-  input.setAttribute('type', 'submit');
-  input.setAttribute('id', 'favorites');
-
-  let favorites = document.getElementById('favorites');
-
-  // console.log(favorites);
-  if (favorites){
-  favorites.addEventListener('submit', starButton);
-  }
-
-  function starButton (e){
-    e.preventDefault();
-
-    if (e){
-      if (favorites === e.target){
-        allFavorites.push(this);
-      }
-    }
-  }
-}
 
 //--------------------FUNCTIONS
+
+function bookmark (){
+  allFavorites.push();
+}
 
 //Generate a random restaurant
 function randomRestaurant(){
@@ -85,14 +66,6 @@ function getRestaurants() {
   }
 }
 
-// function reset() {
-//   let element = document.getElementById('results');
-//     //if (element != null) {
-//         element.remove();
-//    // }
-// }
-
-
 //--------------------EVENT LISTENERS
 
 // event listener and handler for the form
@@ -110,7 +83,6 @@ function displayRestaurants(e){
 
   // console log the input values
   let cuisineType = options.cuisinetype.value;
-  console.log(cuisineType);
 
   let checkedPreference = 0;
   let preferences = options.preference;
@@ -135,12 +107,16 @@ results.innerHTML = '';
       let address = document.createElement('li');
       let categories = document.createElement('li');
       let favorites = document.createElement('li');
+      let input = document.createElement('button');
+      input.setAttribute('onclick', 'bookmark()');
+      input.setAttribute('id', 'favorites');
+      input.innerText = 'Bookmark';
+      favorites.appendChild(input);
 
       title.innerText = allRestaurants[i].name;
       // img.innerText = 
       address.innerText = allRestaurants[i].address;
       categories.innerText = `${allRestaurants[i].cuisine}, ${allRestaurants[i].preferences}`;
-      favorites.innerText = allRestaurants[i].favorite();
 
       restaurant.appendChild(title);
       restaurant.appendChild(address);
