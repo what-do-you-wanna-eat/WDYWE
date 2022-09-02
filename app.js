@@ -57,6 +57,13 @@ function getRestaurants() {
   }
 }
 
+// function reset() {
+//   let element = document.getElementById('results');
+//     //if (element != null) {
+//         element.remove();
+//    // }
+// }
+
 //--------------------EVENT LISTENERS
 
 // event listener and handler for the form
@@ -70,7 +77,6 @@ form.addEventListener('submit', displayRestaurants);
 
 function displayRestaurants(e){
   e.preventDefault();
-
   // event.target is the actual HTML of the form
   let options = e.target;
 
@@ -86,10 +92,12 @@ function displayRestaurants(e){
       checkedPreference = preference.value;
     }
   }
+  
+let results = document.getElementById("results");
+results.innerHTML = '';
 
   for (let i = 0; i < allRestaurants.length; i++){
     if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType || allRestaurants[i].cuisine == cuisineType){
-      let results = document.getElementById("results");
       let restaurant = document.createElement('ul');
       restaurant.setAttribute('id', 'restaurantOptions');
   
@@ -109,6 +117,7 @@ function displayRestaurants(e){
       results.appendChild(restaurant);
     } 
   }
+
 }
   
 

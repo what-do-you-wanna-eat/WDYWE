@@ -62,6 +62,22 @@
         <img src="imgs/tasteofindia.jpg" style="width: 60%">
         <div class="text">Taste of India</div>
     </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+  
   </div>
   <br>
   
@@ -101,10 +117,6 @@
                     <label>
                     <input type = "checkbox" name = "preference" value = "gluten-free">
                     Gluten Free
-                    </label>
-                    <label>
-                    <input type = "checkbox" name = "preference" value = "none" checked>
-                    None
                     </label>
                     </label>
 
