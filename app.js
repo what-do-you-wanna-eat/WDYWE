@@ -1,6 +1,9 @@
 'use strict';
 
 //--------------------GLOBAL VARIABLES/IMPORTS
+
+// array for all favorited restaurants
+let allFavorites = [];
 // array for all the restaurant objects
 let allRestaurants = [
 // using constructor functions to create restaurants
@@ -36,6 +39,16 @@ function Restaurant (name, cuisine, address, preferences, any){
 
 //--------------------CONSTRUCTOR METHODS
 
+//prototype for handling favoriting event
+
+Restaurant.prototype.favorite = function (){
+  let input = document.createElement('input');
+  input.setAttribute('type', 'checkbox');
+  input.setAttribute('id', 'favorites');
+  let favorites = document.getElementById('favorites');
+  favorites.addEventListener('click', starButton);
+}
+
 //--------------------FUNCTIONS
 
 //Generate a random restaurant
@@ -63,6 +76,8 @@ function getRestaurants() {
 //         element.remove();
 //    // }
 // }
+
+
 
 //--------------------EVENT LISTENERS
 
@@ -119,7 +134,6 @@ results.innerHTML = '';
   }
 
 }
-  
 
 //--------------------FUNCTION CALLS
 
@@ -144,3 +158,32 @@ function showSlides() {
   slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
+
+
+//Favoriting restaurants & star selector
+
+//create prototype to display 
+
+//If star is checked, push object into empty favorites array. Convert nodes into an array.
+
+  //gets all stars as a list of nodes
+  //let stars = document.querySelectorAll('stars');
+  //converts the list of nodes into a JS array
+  //let starsArr = Array.from(stars);
+
+//Event listener for favorites
+
+  //document.addEventListener('submit', function(e){
+    //code that runs when star is selected
+    //if(!e.target.matches('.rating')) return;
+    //e.preventDefault();
+  //}, false);
+
+  //Add favorites to localStorage
+  // let favorites = localStorage.getItem('favorites');
+  // if(!favorites){
+    //localStorage.setItem('favorites', JSON.stringify);
+    //favorites = JSON.parse(localStorage.getItem('favorites'));
+  //} else{
+    //favorites = JSON.parse(favorites);
+  //}
