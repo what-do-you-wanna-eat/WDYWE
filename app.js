@@ -97,7 +97,7 @@ let results = document.getElementById("results");
 results.innerHTML = '';
 
   for (let i = 0; i < allRestaurants.length; i++){
-    if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType || allRestaurants[i].cuisine == cuisineType){
+    if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && checkedPreference == 0 || allRestaurants[i].cuisine == cuisineType && checkedPreference == 0){
       let restaurant = document.createElement('ul');
       restaurant.setAttribute('id', 'restaurantOptions');
   
