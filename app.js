@@ -48,21 +48,21 @@ function Restaurant (name, src, cuisine, address, preferences, any){
 
 
 //Generate a random restaurant
-function randomRestaurant(){
-  return Math.floor(math.random()* allRestaurants.length)
-}
+// function randomRestaurant(){
+//   return Math.floor(math.random()* allRestaurants.length)
+// }
 
 // save Restaurants
 function saveRestaurants () {
-  let stringify = JSON.stringify(allRestaurants);
-  localStorage.setItem('allRestaurants', stringify);
+  let stringify = JSON.stringify(allFavorites);
+  localStorage.setItem('allFavorites', stringify);
 }
 
 function getRestaurants() {
-  let getRestaurants = localStorage.getItem('allRestaurants');
-  if (getRestaurants){
-    let parsedItems = JSON.parse(getRestaurants);
-    allRestaurants = parsedItems;
+  let getFavorites = localStorage.getItem('allFavorites');
+  if (getFavorites){
+    let parsedItems = JSON.parse(getFavorites);
+    allFavorites = parsedItems;
   }
 }
 
@@ -130,6 +130,8 @@ results.innerHTML = '';
         event.preventDefault();
         allFavorites.push(allRestaurants[i]);
         console.log(allFavorites);
+        saveRestaurants();
+
       }
 
       favorites.appendChild(input);
@@ -172,6 +174,7 @@ function showSlides() {
   setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
 
+getRestaurants();
 
 //Favoriting restaurants & star selector
 
