@@ -45,9 +45,7 @@ function Restaurant (name, src, cuisine, address, preferences, any){
 //--------------------FUNCTIONS
 
 // need to work on this function to push restaurant object into allFavorite array 
-function bookmark (){
-  allFavorites.push();
-}
+
 
 //Generate a random restaurant
 function randomRestaurant(){
@@ -75,6 +73,7 @@ function getRestaurants() {
 
 let form = document.getElementById("options");
 form.addEventListener('submit', displayRestaurants);
+
 
 //--------------------EVENT HANDLERS
 
@@ -119,10 +118,22 @@ results.innerHTML = '';
       let input = document.createElement('button');
 
       //Referencing bookmark function when clicked
-      input.setAttribute('onclick', 'bookmark()');
+
+      // commented out because error code TO LOOK AT!!
+      // input.setAttribute('onclick', 'bookmark()');
+      
       input.setAttribute('id', 'favorites');
       input.innerText = 'Bookmark';
+      input.addEventListener('click', bookmark);
+
+      function bookmark (event){
+        event.preventDefault();
+        allFavorites.push(allRestaurants[i]);
+        console.log(allFavorites);
+      }
+
       favorites.appendChild(input);
+
 
       title.innerText = allRestaurants[i].name;
       address.innerText = allRestaurants[i].address;
