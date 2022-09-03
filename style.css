@@ -36,11 +36,11 @@ body > footer {
     font-family: 'Pacifico', cursive;;
 }
 
-li {
+#header li {
     display: inline-block;
     padding: 10px;
     margin-top: 15px;
-}
+} 
 
 #header a {
     text-decoration: none;
@@ -268,4 +268,32 @@ footer {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+/* food menu */
+
+#foodImgs {
+    width: 350px;
+}
+
+#restaurantTitle {
+    font-size: 35px;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 15px;
+}
+
+#restaurantOptions {
+    line-height: 28px;
+    list-style: none;
+    display: inline-block;
+}
+
+#favorites {
+    color: gray;
+    background-color: #BFD8D5;
+    border: none;
+    height: 30px;
+    width: 100px;
+    font-size: 18px;
+    letter-spacing: 1px;
 }

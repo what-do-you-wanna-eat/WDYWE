@@ -7,21 +7,21 @@ let allFavorites = [];
 // array for all the restaurant objects
 let allRestaurants = [
 // using constructor functions to create restaurants
-new Restaurant ("Shiro\'s", "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Ishoni Yakiniku", "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian', 'gluten-free'], 'Any'),
-new Restaurant ("Kizuki Ramen", "Japanese", "320 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Fogon Cocina", "Mexican", "600 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Fonda la Catrina", "Mexican", "5905 Airport Way S. Seattle, WA 98108", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("La Carta de Oaxaca", "Mexican", "5431 Ballard Ave. Seattle, WA 98107", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Cafe Turko", "Mediterranean", "750 N. 34th St., Seattle, WA 98103", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Momnoon", "Mediterranean", "1508 Melrose Ave. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Petra Bistro", "Mediterranean", "2501 4th Ave., Seattle, WA 98121", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Taste of India", "Indian", "5517 Roosevelt Way, Seattle, WA 98105",['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Daawat Grill", "Indian", "820 Pike St., Seattle, WA 98101", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Nirmal\'s", "Indian", "106 Occidental Ave., Seattle, WA 98104", ['vegan', 'vegetarian'], 'Any'),
-new Restaurant ("Applebee\'s", "American", "13856 Bel Red Rd., Bellevue, WA 90005", ['gluten-free'], 'Any'),
-new Restaurant ("Denny\'s", "American", "2762 4th Ave., Seattle, WA 98134", ['gluten-free'], 'Any'),
-new Restaurant ("Red Lobster", "American", "4231 196th St., Lynwood, WA 98036", ['gluten-free'], 'Any'),
+new Restaurant ("Shiro\'s", 'imgs/geoDuck_shiro.jpeg',"Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Ishoni Yakiniku", 'imgs/japaneseWagyu_ishoni.jpeg', "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian', 'gluten-free'], 'Any'),
+new Restaurant ("Kizuki Ramen", 'imgs/spicyramen_kizuki.jpeg', "Japanese", "320 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Fogon Cocina", 'imgs/streetTacos_fogon.jpeg', "Mexican", "600 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Fonda la Catrina", 'imgs/chileRelleno_catrina.jpeg', "Mexican", "5905 Airport Way S. Seattle, WA 98108", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("La Carta de Oaxaca", 'imgs/birria_oaxaca.jpeg', "Mexican", "5431 Ballard Ave. Seattle, WA 98107", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Cafe Turko", 'imgs/muhammara_turko.jpeg',  "Mediterranean", "750 N. 34th St., Seattle, WA 98103", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Momnoon", 'imgs/friedCauli_mamnoon.jpeg', "Mediterranean", "1508 Melrose Ave. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Petra Bistro", 'imgs/mezzaTray_petra.jpeg', "Mediterranean", "2501 4th Ave., Seattle, WA 98121", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Taste of India", 'imgs/samosa_india.jpeg', "Indian", "5517 Roosevelt Way, Seattle, WA 98105",['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Daawat Grill", 'imgs/vegetableKofta_daawat.jpeg', "Indian", "820 Pike St., Seattle, WA 98101", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Nirmal\'s", 'imgs/crabCurry_nirmals.jpeg', "Indian", "106 Occidental Ave., Seattle, WA 98104", ['vegan', 'vegetarian'], 'Any'),
+new Restaurant ("Applebee\'s", 'imgs/chickenWontonTacos_apple.jpeg', "American", "13856 Bel Red Rd., Bellevue, WA 90005", ['gluten-free'], 'Any'),
+new Restaurant ("Denny\'s", 'imgs/moonsOverMyHammy_dennys.jpeg', "American", "2762 4th Ave., Seattle, WA 98134", ['gluten-free'], 'Any'),
+new Restaurant ("Red Lobster", 'imgs/endlessShrimp_redLobster.jpeg', "American", "4231 196th St., Lynwood, WA 98036", ['gluten-free'], 'Any'),
 ];
 
 
@@ -29,8 +29,9 @@ new Restaurant ("Red Lobster", "American", "4231 196th St., Lynwood, WA 98036", 
 
 // constructor function for creating restaurants
 
-function Restaurant (name, cuisine, address, preferences, any){
+function Restaurant (name, src, cuisine, address, preferences, any){
   this.name = name;
+  this.src = src;
   this.cuisine = cuisine;
   this.address = address; 
   this.preferences = preferences;
@@ -43,6 +44,7 @@ function Restaurant (name, cuisine, address, preferences, any){
 
 //--------------------FUNCTIONS
 
+// need to work on this function to push restaurant object into allFavorite array 
 function bookmark (){
   allFavorites.push();
 }
@@ -103,22 +105,31 @@ results.innerHTML = '';
   
       let title = document.createElement('li');
       title.setAttribute('id', 'restaurantTitle');
-      // let img = document.createElement('li');
+
+      let img = document.createElement('li');
+      let createImg = document.createElement('img');
+      createImg.setAttribute('src', `${allRestaurants[i].src}`);
+      createImg.setAttribute('id', 'foodImgs');
+      img.appendChild(createImg);
+
       let address = document.createElement('li');
       let categories = document.createElement('li');
+
       let favorites = document.createElement('li');
       let input = document.createElement('button');
+
+      //Referencing bookmark function when clicked
       input.setAttribute('onclick', 'bookmark()');
       input.setAttribute('id', 'favorites');
       input.innerText = 'Bookmark';
       favorites.appendChild(input);
 
       title.innerText = allRestaurants[i].name;
-      // img.innerText = 
       address.innerText = allRestaurants[i].address;
       categories.innerText = `${allRestaurants[i].cuisine}, ${allRestaurants[i].preferences}`;
 
       restaurant.appendChild(title);
+      restaurant.appendChild(img);
       restaurant.appendChild(address);
       restaurant.appendChild(categories);
       restaurant.appendChild(favorites);
@@ -129,8 +140,6 @@ results.innerHTML = '';
 }
 
 //--------------------FUNCTION CALLS
-
-
 
 // function for rendering objects
 
