@@ -128,10 +128,11 @@ results.innerHTML = '';
 
       function bookmark (event){
         event.preventDefault();
+        if (!allFavorites.includes(allRestaurants[i])){
         allFavorites.push(allRestaurants[i]);
+        }
         console.log(allFavorites);
         saveRestaurants();
-
       }
 
       favorites.appendChild(input);
