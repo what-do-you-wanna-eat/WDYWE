@@ -8,12 +8,15 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
     </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
     <title>WDYWE? &trade;</title>
 </head>
 <body>
 
 <header id = "header">
-    <h1 id = "appname">WDYWE?<br>
+    <h1 id = "appname">WDYWE? &#129300;<br>
         </h1>
             <ul>
                 <li><a href = "about.html">About Us</a></li>
@@ -26,8 +29,46 @@
     <img>
 </div>
 
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 5</div>
+        <img src="imgs/cafeturko.jpg" style="width: 78%">
+        <div class="text">Cafe Turko</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 5</div>
+      <img src="imgs/ishoni.jpg" style="width: 70%">
+      <div class="text">Ishoni</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 5</div>
+      <img src="imgs/spicyramen_kizuki.jpeg" style="width: 70%">
+      <div class="text">Kizuki Ramen</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 5</div>
+      <img src="imgs/fogon.jpg" style="width: 72%">
+      <div class="text">Fogon Cocina</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">5 / 5</div>
+        <img src="imgs/tasteofindia.jpg" style="width: 60%">
+        <div class="text">Taste of India</div>
+    </div>
+  
+  </div>
+  <br>
+  
+
 <div id = "instructions">
-    <p>Let us help you figure that out.
+    <p>Let us help you figure that out. <br>
         Please fill out the form below with your preferences so we can find restuarants for you!</p>
 </div>
 
@@ -38,11 +79,12 @@
                 <label class = "title">Cuisine Type:
                     <br>
                     <select name = "cuisinetype" id = "cuisinetype">
-                        <option value = "japanese">Japanese</option>
-                        <option value = "mexican">Mexican</option>
-                        <option value = "mediterrenean">Mediterrenean</option>
-                        <option value = "indian">Indian</option>
-                        <option value = "american">American</option>
+                        <option value = "Japanese">Japanese</option>
+                        <option value = "Mexican">Mexican</option>
+                        <option value = "Mediterranean">Mediterranean</option>
+                        <option value = "Indian">Indian</option>
+                        <option value = "American">American</option>
+                        <option value = "Any">Any</option>
                     </select>
                 </label>
         <br><br>
@@ -51,14 +93,14 @@
                     <br>
                     <label>
                     <input type = "checkbox" name = "preference" value = "vegan">
-                        Vegan
+                    Vegan
                     </label>
                     <label>
                     <input type = "checkbox" name = "preference" value = "vegetarian">
                     Vegetarian
                     </label>
                     <label>
-                    <input type = "checkbox" name = "preference" value = "glutenfree">
+                    <input type = "checkbox" name = "preference" value = "gluten-free">
                     Gluten Free
                     </label>
                     </label>
@@ -69,6 +111,7 @@
         </fieldset>
     </form>
 </div>
+
 <div id="results">
 
 </div>
