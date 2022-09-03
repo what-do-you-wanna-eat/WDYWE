@@ -16,7 +16,9 @@ function getRestaurants() {
     }
   }
 
-  getRestaurants();
+getRestaurants();
+
+let renderFavorites = function() {
 
 let favorites = document.getElementById("favorites");
 favorites.innerHTML = '';
@@ -56,13 +58,9 @@ favorites.innerHTML = '';
         allFavorites.splice(i, 1);
         console.log(allFavorites);
         saveRestaurants();
+        renderFavorites();
       }
-
-
-
  
-
-
       title.innerText = allFavorites[i].name;
       address.innerText = allFavorites[i].address;
       categories.innerText = `${allFavorites[i].cuisine}, ${allFavorites[i].preferences}`;
@@ -74,3 +72,6 @@ favorites.innerHTML = '';
       restaurant.appendChild(remove);
       favorites.appendChild(restaurant);
     } 
+  }
+
+  renderFavorites();
