@@ -3,6 +3,11 @@ console.log('proof of life');
 
 let allFavorites = [];
 
+function saveRestaurants () {
+  let stringify = JSON.stringify(allFavorites);
+  localStorage.setItem('allFavorites', stringify);
+}
+
 function getRestaurants() {
     let getFavorites = localStorage.getItem('allFavorites');
     if (getFavorites){
@@ -11,9 +16,11 @@ function getRestaurants() {
     }
   }
 
-  getRestaurants();
+getRestaurants();
 
-let favorites = document.getElementById("favorites");
+let renderFavorites = function() {
+
+let favorites = document.getElementById("favoriteRestaurants");
 favorites.innerHTML = '';
 
   for (let i = 0; i < allFavorites.length; i++){
@@ -33,29 +40,27 @@ favorites.innerHTML = '';
       let address = document.createElement('li');
       let categories = document.createElement('li');
 
-    //   let favorites = document.createElement('li');
-    //   let input = document.createElement('button');
-
-      //Referencing bookmark function when clicked
+      // Referencing bookmark function when clicked
 
       // commented out because error code TO LOOK AT!!
       // input.setAttribute('onclick', 'bookmark()');
       
-    //   input.setAttribute('id', 'favorites');
-    //   input.innerText = 'Bookmark';
-    //   input.addEventListener('click', bookmark);
+      let remove = document.createElement('li');
+      let input = document.createElement('button');
+      remove.appendChild(input);
+      
+      input.setAttribute('id', 'favorites');
+      input.innerText = 'Remove';
+      input.addEventListener('click', removeBookmark);
 
-    //   function bookmark (event){
-    //     event.preventDefault();
-    //     allFavorites.push(allRestaurants[i]);
-    //     console.log(allFavorites);
-    //     saveRestaurants();
-
-    //   }
-
-    //   favorites.appendChFavorites
-
-
+      function removeBookmark (event){
+        event.preventDefault();
+        allFavorites.splice(i, 1);
+        console.log(allFavorites);
+        saveRestaurants();
+        renderFavorites();
+      }
+ 
       title.innerText = allFavorites[i].name;
       address.innerText = allFavorites[i].address;
       categories.innerText = `${allFavorites[i].cuisine}, ${allFavorites[i].preferences}`;
@@ -64,6 +69,9 @@ favorites.innerHTML = '';
       restaurant.appendChild(img);
       restaurant.appendChild(address);
       restaurant.appendChild(categories);
-    //   restaurant.appendChild(favorites);
+      restaurant.appendChild(remove);
       favorites.appendChild(restaurant);
     } 
+  }
+
+  renderFavorites();
