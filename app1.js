@@ -20,7 +20,7 @@ getRestaurants();
 
 let renderFavorites = function() {
 
-let favorites = document.getElementById("favorites");
+let favorites = document.getElementById("favoriteRestaurants");
 favorites.innerHTML = '';
 
   for (let i = 0; i < allFavorites.length; i++){
