@@ -87,6 +87,15 @@ body > footer {
     letter-spacing: 1px;
 }
 
+#submit:hover {
+    cursor: pointer;
+    background-color: #bfd8d59e;
+}
+
+#submit:active{
+    background-color: #BFD8D5;
+}
+
 footer {
     text-align: center;
     background-color: #BFD8D5;
@@ -297,3 +306,14 @@ footer {
     font-size: 18px;
     letter-spacing: 1px;
 }
+
+#favorites:hover {
+    cursor: pointer;
+    background-color: #bfd8d59e;
+}
+
+#favorites:active {
+    background-color: #BFD8D5;
+}
+
+
