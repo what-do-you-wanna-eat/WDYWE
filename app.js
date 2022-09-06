@@ -56,6 +56,7 @@ function Restaurant (name, src, cuisine, address, preferences, any){
 function saveRestaurants () {
   let stringify = JSON.stringify(allFavorites);
   localStorage.setItem('allFavorites', stringify);
+
 }
 
 function getRestaurants() {
@@ -128,11 +129,15 @@ results.innerHTML = '';
 
       function bookmark (event){
         event.preventDefault();
+
+        getRestaurants();
+
         if (!allFavorites.includes(allRestaurants[i])){
         allFavorites.push(allRestaurants[i]);
         }
         console.log(allFavorites);
         saveRestaurants();
+
       }
 
       favorites.appendChild(input);
@@ -175,7 +180,6 @@ function showSlides() {
   setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
 
-getRestaurants();
 
 //Favoriting restaurants & star selector
 

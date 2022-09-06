@@ -5,7 +5,8 @@ let allFavorites = [];
 
 function saveRestaurants () {
   let stringify = JSON.stringify(allFavorites);
-  localStorage.setItem('allFavorites', stringify);
+    localStorage.setItem('allFavorites', stringify);
+console.log(stringify);
 }
 
 function getRestaurants() {
@@ -16,9 +17,10 @@ function getRestaurants() {
     }
   }
 
-getRestaurants();
 
 let renderFavorites = function() {
+
+getRestaurants();
 
 let favorites = document.getElementById("favoriteRestaurants");
 favorites.innerHTML = '';
