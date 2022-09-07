@@ -2,8 +2,11 @@
 
 //--------------------GLOBAL VARIABLES/IMPORTS
 
+let slideIndex = 0;
+
 // array for all favorited restaurants
 let allFavorites = [];
+
 // array for all the restaurant objects
 let allRestaurants = [
 // using constructor functions to create restaurants
@@ -36,7 +39,6 @@ function Restaurant (name, src, cuisine, address, preferences, any){
   this.address = address; 
   this.preferences = preferences;
   this.any = any;
-  this.favorite = false;
 }
 
 //--------------------CONSTRUCTOR METHODS
@@ -44,19 +46,10 @@ function Restaurant (name, src, cuisine, address, preferences, any){
 
 //--------------------FUNCTIONS
 
-// need to work on this function to push restaurant object into allFavorite array 
-
-
-//Generate a random restaurant
-// function randomRestaurant(){
-//   return Math.floor(math.random()* allRestaurants.length)
-// }
-
 // save Restaurants
 function saveRestaurants () {
   let stringify = JSON.stringify(allFavorites);
   localStorage.setItem('allFavorites', stringify);
-
 }
 
 function getRestaurants() {
@@ -65,6 +58,20 @@ function getRestaurants() {
     let parsedItems = JSON.parse(getFavorites);
     allFavorites = parsedItems;
   }
+}
+
+// slide show function
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
 
 //--------------------EVENT LISTENERS
@@ -95,116 +102,78 @@ function displayRestaurants(e){
     }
   }
   
-let results = document.getElementById("results");
-results.innerHTML = '';
+  let results = document.getElementById("results");
+  results.innerHTML = '';
 
-  for (let i = 0; i < allRestaurants.length; i++){
-    if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && checkedPreference == 0 || allRestaurants[i].cuisine == cuisineType && checkedPreference == 0){
-      let restaurant = document.createElement('ul');
-      restaurant.setAttribute('id', 'restaurantOptions');
-  
-      let title = document.createElement('li');
-      title.setAttribute('id', 'restaurantTitle');
+    for (let i = 0; i < allRestaurants.length; i++){
+      if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) || allRestaurants[i].any == cuisineType && checkedPreference == 0 || allRestaurants[i].cuisine == cuisineType && checkedPreference == 0){
+        let restaurant = document.createElement('ul');
+        restaurant.setAttribute('id', 'restaurantOptions');
+    
+        let title = document.createElement('li');
+        title.setAttribute('id', 'restaurantTitle');
 
-      let img = document.createElement('li');
-      let createImg = document.createElement('img');
-      createImg.setAttribute('src', `${allRestaurants[i].src}`);
-      createImg.setAttribute('id', 'foodImgs');
-      img.appendChild(createImg);
+        let img = document.createElement('li');
+        let createImg = document.createElement('img');
+        createImg.setAttribute('src', `${allRestaurants[i].src}`);
+        createImg.setAttribute('id', 'foodImgs');
+        img.appendChild(createImg);
 
-      let address = document.createElement('li');
-      let categories = document.createElement('li');
+        let address = document.createElement('li');
+        let categories = document.createElement('li');
 
-      let favorites = document.createElement('li');
-      let input = document.createElement('button');
+        let favorites = document.createElement('li');
+        let input = document.createElement('button');
 
-      //Referencing bookmark function when clicked
+        //Referencing bookmark function when clicked
+        
+        input.setAttribute('class', 'favorites');
+        input.setAttribute('id', allRestaurants[i].name);
+        input.innerText = 'Bookmark';
 
-      // commented out because error code TO LOOK AT!!
-      // input.setAttribute('onclick', 'bookmark()');
-      
-      input.setAttribute('id', 'favorites');
-      input.innerText = 'Bookmark';
-      input.addEventListener('click', bookmark);
+        input.addEventListener('click', bookmark);
 
-      function bookmark (event){
-        event.preventDefault();
+        favorites.appendChild(input);
 
-        getRestaurants();
+        title.innerText = allRestaurants[i].name;
+        address.innerText = allRestaurants[i].address;
+        categories.innerText = `${allRestaurants[i].cuisine}, ${allRestaurants[i].preferences}`;
 
-        if (!allFavorites.includes(allRestaurants[i])){
-        allFavorites.push(allRestaurants[i]);
-        }
-        console.log(allFavorites);
-        saveRestaurants();
-
-      }
-
-      favorites.appendChild(input);
-
-
-      title.innerText = allRestaurants[i].name;
-      address.innerText = allRestaurants[i].address;
-      categories.innerText = `${allRestaurants[i].cuisine}, ${allRestaurants[i].preferences}`;
-
-      restaurant.appendChild(title);
-      restaurant.appendChild(img);
-      restaurant.appendChild(address);
-      restaurant.appendChild(categories);
-      restaurant.appendChild(favorites);
-      results.appendChild(restaurant);
-    } 
-  }
+        restaurant.appendChild(title);
+        restaurant.appendChild(img);
+        restaurant.appendChild(address);
+        restaurant.appendChild(categories);
+        restaurant.appendChild(favorites);
+        results.appendChild(restaurant);
+      } 
+    }
 
 }
+
+function bookmark (event){
+  event.preventDefault();
+  // itirate thorugh allFavorites array and if any of the objects has same name as event.target.id, we will return(exit out of the function)
+  for (let i = 0; i < allFavorites.length; i ++){
+    if (allFavorites[i].name == event.target.id){
+      return;
+    }
+  }
+  // itirate through allRestaurants when we find object with same name as event.target.id, push object to allFavorites
+  for (let i = 0; i < allRestaurants.length; i ++){
+    if (allRestaurants[i].name == event.target.id){
+      allFavorites.push(allRestaurants[i]);
+    }
+  }
+  // invoke saveRestaurants()
+  saveRestaurants();
+}
+
 
 //--------------------FUNCTION CALLS
 
-// function for rendering objects
-
-// function for saving favorites to local storage
-
-// slide show function
-let slideIndex = 0;
 showSlides();
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 3000); // Change image every 3 seconds
-}
 
+// getting allFavorites array on pageload
+getRestaurants();
 
-//Favoriting restaurants & star selector
-
-//create prototype to display 
-
-//If star is checked, push object into empty favorites array. Convert nodes into an array.
-
-  //gets all stars as a list of nodes
-  //let stars = document.querySelectorAll('stars');
-  //converts the list of nodes into a JS array
-  //let starsArr = Array.from(stars);
-
-//Event listener for favorites
-
-  //document.addEventListener('submit', function(e){
-    //code that runs when star is selected
-    //if(!e.target.matches('.rating')) return;
-    //e.preventDefault();
-  //}, false);
-
-  // Add favorites to localStorage
-  // let favorites = localStorage.getItem('favorites');
-  // if(!favorites){
-  //   localStorage.setItem('favorites', JSON.stringify);
-  //   favorites = JSON.parse(localStorage.getItem('favorites'));
-  // } else{
-  //   favorites = JSON.parse(favorites);
-  // }

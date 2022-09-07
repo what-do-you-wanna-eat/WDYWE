@@ -297,7 +297,7 @@ footer {
     display: inline-block;
 }
 
-#favorites {
+.favorites {
     color: gray;
     background-color: #BFD8D5;
     border: none;
@@ -307,12 +307,12 @@ footer {
     letter-spacing: 1px;
 }
 
-#favorites:hover {
+.favorites:hover {
     cursor: pointer;
     background-color: #bfd8d59e;
 }
 
-#favorites:active {
+.favorites:active {
     background-color: #BFD8D5;
 }
 
