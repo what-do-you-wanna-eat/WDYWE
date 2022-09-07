@@ -129,7 +129,7 @@ function displayRestaurants(e){
         
         input.setAttribute('class', 'favorites');
         input.setAttribute('id', allRestaurants[i].name);
-        input.innerText = 'Bookmark';
+        input.innerText = 'Favorite';
 
         input.addEventListener('click', bookmark);
 
