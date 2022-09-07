@@ -1,5 +1,4 @@
 'use strict';
-console.log('proof of life');
 
 let allFavorites = [];
 
@@ -18,9 +17,12 @@ function getRestaurants() {
 
 getRestaurants();
 
+
+// function that renders bookmarked restaurants
+
 let renderFavorites = function() {
 
-let favorites = document.getElementById("favorites");
+let favorites = document.getElementById("favoriteRestaurants");
 favorites.innerHTML = '';
 
   for (let i = 0; i < allFavorites.length; i++){
@@ -40,17 +42,14 @@ favorites.innerHTML = '';
       let address = document.createElement('li');
       let categories = document.createElement('li');
 
-      // Referencing bookmark function when clicked
-
-      // commented out because error code TO LOOK AT!!
-      // input.setAttribute('onclick', 'bookmark()');
       
       let remove = document.createElement('li');
       let input = document.createElement('button');
       remove.appendChild(input);
       
-      input.setAttribute('id', 'favorites');
+      input.setAttribute('class', 'favorites');
       input.innerText = 'Remove';
+      
       input.addEventListener('click', removeBookmark);
 
       function removeBookmark (event){
