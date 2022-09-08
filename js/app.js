@@ -3,13 +3,8 @@
 //--------------------GLOBAL VARIABLES/IMPORTS
 
 let slideIndex = 0;
-
-// array for all favorited restaurants
 let allFavorites = [];
-
-// array for all the restaurant objects
 let allRestaurants = [
-// using constructor functions to create restaurants
 new Restaurant ("Shiro\'s", 'imgs/geoDuck_shiro.jpeg',"Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian'], 'Any'),
 new Restaurant ("Ishoni Yakiniku", 'imgs/japaneseWagyu_ishoni.jpeg', "Japanese", "2401 2nd Ave. Seattle, WA 98121", ['vegan', 'vegetarian', 'gluten-free'], 'Any'),
 new Restaurant ("Kizuki Ramen", 'imgs/spicyramen_kizuki.jpeg', "Japanese", "320 E. Pine St. Seattle, WA 98122", ['vegan', 'vegetarian'], 'Any'),
@@ -30,8 +25,6 @@ new Restaurant ("Red Lobster", 'imgs/endlessShrimp_redLobster.jpeg', "American",
 
 //--------------------CONSTRUCTORS
 
-// constructor function for creating restaurants
-
 function Restaurant (name, src, cuisine, address, preferences, any){
   this.name = name;
   this.src = src;
@@ -46,7 +39,6 @@ function Restaurant (name, src, cuisine, address, preferences, any){
 
 //--------------------FUNCTIONS
 
-// save Restaurants
 function saveRestaurants () {
   let stringify = JSON.stringify(allFavorites);
   localStorage.setItem('allFavorites', stringify);
@@ -60,8 +52,6 @@ function getRestaurants() {
   }
 }
 
-// slide show function
-
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");
@@ -71,13 +61,10 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 3000); // Change image every 3 seconds
+  setTimeout(showSlides, 3000);
 }
 
 //--------------------EVENT LISTENERS
-
-// event listener and handler for the form
-
 
 let form = document.getElementById("options");
 form.addEventListener('submit', displayRestaurants);
@@ -87,14 +74,11 @@ form.addEventListener('submit', displayRestaurants);
 
 function displayRestaurants(e){
   e.preventDefault();
-  // event.target is the actual HTML of the form
   let options = e.target;
-
-  // console log the input values
   let cuisineType = options.cuisinetype.value;
-
   let checkedPreference = 0;
   let preferences = options.preference;
+
   for (let i = 0; i < preferences.length; i++) {
     let preference = preferences[i];
     if (preference.checked) {
@@ -124,8 +108,6 @@ function displayRestaurants(e){
 
         let favorites = document.createElement('li');
         let input = document.createElement('button');
-
-        //Referencing bookmark function when clicked
         
         input.setAttribute('class', 'favorites');
         input.setAttribute('id', allRestaurants[i].name);
@@ -146,34 +128,35 @@ function displayRestaurants(e){
         restaurant.appendChild(favorites);
         results.appendChild(restaurant);
       } 
-    }
+      else {
+        let message2 = document.createElement('h1');
+        message2.innerText = 'There are no restaurants that match your requests!';
+        results.appendChild(message2);
+        break;
+      }
+    } 
 
 }
 
 function bookmark (event){
   event.preventDefault();
-  // itirate thorugh allFavorites array and if any of the objects has same name as event.target.id, we will return(exit out of the function)
   for (let i = 0; i < allFavorites.length; i ++){
     if (allFavorites[i].name == event.target.id){
       return;
     }
   }
-  // itirate through allRestaurants when we find object with same name as event.target.id, push object to allFavorites
+
   for (let i = 0; i < allRestaurants.length; i ++){
     if (allRestaurants[i].name == event.target.id){
       allFavorites.push(allRestaurants[i]);
     }
   }
-  // invoke saveRestaurants()
+
   saveRestaurants();
 }
-
 
 //--------------------FUNCTION CALLS
 
 showSlides();
-
-
-// getting allFavorites array on pageload
 getRestaurants();
 

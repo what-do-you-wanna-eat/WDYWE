@@ -7,18 +7,24 @@ function saveRestaurants () {
   localStorage.setItem('allFavorites', stringify);
 }
 
+let intro = document.getElementById('favoritePage');
+let favorites = document.getElementById("favoriteRestaurants");
+let message1 = document.createElement('h1');
+intro.appendChild(message1);
+
 function getRestaurants() {
     let getFavorites = localStorage.getItem('allFavorites');
-    if (getFavorites){
-      let parsedItems = JSON.parse(getFavorites);
+    let parsedItems = JSON.parse(getFavorites);
+    console.log(getFavorites);
+    if (parsedItems.length !== 0){
       allFavorites = parsedItems;
+      message1.innerText = 'Here are your favorites!';
+    } else if (parsedItems.length == 0){
+      message1.innerText = 'You currently have no favorite restaurants!';
     }
   }
 
 getRestaurants();
-
-
-// function that renders bookmarked restaurants
 
 let renderFavorites = function() {
 
