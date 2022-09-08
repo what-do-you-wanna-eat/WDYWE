@@ -49,8 +49,14 @@ body > footer {
 
 .intro {
     margin-top: 30px;
-    margin-bottom: -50px;
+    margin-bottom: 10px;
     font-size: 40px;
+}
+
+#favoritePage {
+    font-family: 'Poppins', sans-serif;
+    margin-top: -20px;
+    font-size: 15px;
 }
 
 #instructions {
@@ -104,8 +110,6 @@ footer {
     padding: 5px;
     font-size: 20px;
 }
-
-/* about me page */
 
 #andra {
     display: flex;
