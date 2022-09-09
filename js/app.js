@@ -128,7 +128,7 @@ function displayRestaurants(e){
         restaurant.appendChild(favorites);
         results.appendChild(restaurant);
       } 
-      else {
+      else if (allRestaurants[i].cuisine == cuisineType && allRestaurants[i].preferences.includes(checkedPreference) !== true){
         let message2 = document.createElement('h1');
         message2.innerText = 'There are no restaurants that match your requests!';
         results.appendChild(message2);
